@@ -9467,6 +9467,9 @@ class Fruit
             $out .= '<link href="' . Fruit_config::$scripts_url . '/' . Fruit_config::$plugins_uri .
                 '/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />';
         }
+        if (Fruit_config::$load_datatable) {
+            $out .= '<link href="' . Fruit_config::$scripts_url . '/' . Fruit_config::$plugins_uri . '/datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />';
+        }
         if (Fruit_config::$load_jquery_ui)
             $out .= '<link href="' . Fruit_config::$scripts_url . '/' . Fruit_config::$plugins_uri .
                 '/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" />';
@@ -9537,6 +9540,11 @@ class Fruit
             $out .= '<script src="//maps.google.com/maps/api/js?sensor=false&language=' . $language . '"></script>';
         $out .= '<script src="' . Fruit_config::$scripts_url . '/' . Fruit_config::$plugins_uri . '/fruit.js"></script>';
 
+        if (Fruit_config::$load_datatable) {
+            $out .= '<script src="'. Fruit_config::$scripts_url . '/' . Fruit_config::$plugins_uri.
+                '/datatable/js/jquery.dataTables.min.js"></script>';
+            $out .= '<script type="text/javascript">$(document).ready(function(){$("#datatable").dataTable();});</script>';   
+        }
         $config = array(
             'url' => Fruit_config::$scripts_url . '/' . Fruit_config::$ajax_uri,
             'editor_url' => Fruit_config::$editor_url,
